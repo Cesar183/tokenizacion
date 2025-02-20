@@ -1,14 +1,26 @@
-##Spring Configuration
 server:
   port: 8080
 spring:
   application:
-    name: Tokenizacion
+    name: "Tokenizacion"
   devtools:
     add-properties: false
   h2:
     console:
-      enabled: true
-      path: /h2
+      enabled: false
   profiles:
-    include:
+    include: null
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/tokenizacion"
+    username: "root"
+    password: "admin"
+    driverClassName: "org.postgresql.Driver"
+  jpa:
+    databasePlatform: "org.hibernate.dialect.H2Dialect"
+    hibernate:
+      ddl-auto: validate # Para que no se borren los datos de la base de datos
+      show-sql: true  # Para ver las consultas SQL generadas
+      properties:
+        hibernate.format_sql: true
+cors:
+  allowed-origins: "http://localhost:4200,http://localhost:8080"

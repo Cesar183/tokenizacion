@@ -37,7 +37,7 @@ public class ActionHistory {
     private String descriptionBin;
 
     private String pkIdToken;
-    private String dateUpdate;
+    private Timestamp dateUpdate;
     private String historyStateToken;
 
     private String nameDevice;
