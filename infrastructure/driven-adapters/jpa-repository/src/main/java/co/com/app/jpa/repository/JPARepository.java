@@ -21,13 +21,13 @@ public interface JPARepository extends CrudRepository<ActionHistoryEntity, Integ
             "    tht.pk_id_token, tht.state_token AS history_state_token, " +
             "    tht.date_update, twp.description, " +
             "    twp.visa_token_requestor_id, twp.mastercard_token_requestor_id, " +
-            "    tuc.old_fpan, tr.token_requestor_id, tr.token_requestor_name, tr.token_type " +
-            "FROM schadigi.tbl_token_request tr " +
-            "LEFT JOIN schadigi.tbl_bin tb ON (tb.pk_logo_class = tr.card_logo) " +
-            "LEFT JOIN schadigi.tbl_devices td ON (td.x_correlation_id = tr.x_correlation_id) " +
-            "LEFT JOIN schadigi.tbl_historic_token tht ON (tht.virtual_card_id = tr.virtual_card_id) " +
-            "LEFT JOIN schadigi.tbl_wallet_provider twp ON (twp.pk_wallet_provider_id = tr.wallet_provider_id) " +
-            "LEFT JOIN schadigi.tbl_update_cards tuc ON (tuc.new_fpan = tr.fpan) " +
+            "    tuc.old_fpan, tr.token_requestor_id, tr.token_requestor_name " +
+            "FROM tokenizacion.tbl_token_request tr " +
+            "LEFT JOIN tokenizacion.tbl_bin tb ON (tb.pk_logo_class = tr.card_logo) " +
+            "LEFT JOIN tokenizacion.tbl_devices td ON (td.x_correlation_id = tr.x_correlation_id) " +
+            "LEFT JOIN tokenizacion.tbl_historic_token tht ON (tht.virtual_card_id = tr.virtual_card_id) " +
+            "LEFT JOIN tokenizacion.tbl_wallet_provider twp ON (twp.pk_wallet_provider_id = tr.wallet_provider_id) " +
+            "LEFT JOIN tokenizacion.tbl_update_cards tuc ON (tuc.new_fpan = tr.fpan) " +
             "WHERE tr.document_number = :documentNumber " +
             "  AND tr.document_type = :documentType " +
             "  AND tr.date_request BETWEEN :dateFrom AND :dateTo " +
@@ -77,11 +77,11 @@ public interface JPARepository extends CrudRepository<ActionHistoryEntity, Integ
     );
 
     @Query(value = "SELECT count(1) " +
-            "FROM schadigi.tbl_token_request tr " +
-            "LEFT JOIN schadigi.tbl_bin tb ON (tb.pk_logo_class = tr.card_logo) " +
-            "LEFT JOIN schadigi.tbl_devices td ON (td.x_correlation_id = tr.x_correlation_id) " +
-            "LEFT JOIN schadigi.tbl_historic_token tht ON (tht.virtual_card_id = tr.virtual_card_id) " +
-            "LEFT JOIN schadigi.tbl_wallet_provider twp ON (twp.pk_wallet_provider_id = tr.wallet_provider_id) " +
+            "FROM tokenizacion.tbl_token_request tr " +
+            "LEFT JOIN tokenizacion.tbl_bin tb ON (tb.pk_logo_class = tr.card_logo) " +
+            "LEFT JOIN tokenizacion.tbl_devices td ON (td.x_correlation_id = tr.x_correlation_id) " +
+            "LEFT JOIN tokenizacion.tbl_historic_token tht ON (tht.virtual_card_id = tr.virtual_card_id) " +
+            "LEFT JOIN tokenizacion.tbl_wallet_provider twp ON (twp.pk_wallet_provider_id = tr.wallet_provider_id) " +
             "WHERE tr.document_number = :documentNumber  " +
             "  AND tr.document_type = :documentType " +
             "  AND tr.date_request BETWEEN :dateFrom AND :dateTo " +

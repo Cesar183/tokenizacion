@@ -11,12 +11,12 @@ spring:
   profiles:
     include: null
   datasource:
-    url: "jdbc:postgresql://localhost:5432/tokenizacion"
-    username: "root"
+    url: "jdbc:postgresql://localhost:5432/postgres"
+    username: "postgres"
     password: "admin"
     driverClassName: "org.postgresql.Driver"
   jpa:
-    databasePlatform: "org.hibernate.dialect.H2Dialect"
+    databasePlatform: "org.hibernate.dialect.PostgreSQLDialect"
     hibernate:
       ddl-auto: validate # Para que no se borren los datos de la base de datos
       show-sql: true  # Para ver las consultas SQL generadas
